@@ -7,7 +7,7 @@ class User(models.Model):
     history_message = models.ManyToManyField('Text', blank=True, verbose_name='История переписки')
 
 class Character(models.Model):
-    name = models.CharField(max_length=128, verbose_name='Имя персонажа')
+    name = models.CharField(max_length=128, verbose_name='Личность персонажа')
     personality = models.TextField(verbose_name='Характер персонажа')
     photo = models.ImageField(upload_to='chatacters/', verbose_name='Фотография персонажа')
 

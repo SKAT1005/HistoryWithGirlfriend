@@ -97,4 +97,4 @@ def callback(call):
         elif data[0] == 'choose_history':
             choose_history(chat_id=chat_id, user=user, history_id=data[1], language=language)
 
-bot.polling(none_stop=True)
+bot.infinity_polling(timeout=50, long_polling_timeout = 25)

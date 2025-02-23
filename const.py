@@ -1,7 +1,7 @@
 import telebot
 import translators as ts
 
-bot = telebot.TeleBot('7195501588:AAFNEF48b0wNeIqUTVxdq5KZ3K8Ur4e9rz0')
+bot = telebot.TeleBot('7171194252:AAH4RfsCaxDNv22yfWoD7kqLwStH1PW7EZk')
 
 
 def translater(text, language):
