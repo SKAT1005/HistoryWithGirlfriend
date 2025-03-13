@@ -1,4 +1,6 @@
+import base64
 import os
+from io import BytesIO
 
 import django
 from const import translater, bot
@@ -36,8 +38,13 @@ def text(message):
     chat_id = message.chat.id
     user, _ = User.objects.get_or_create(chat_id=chat_id)
     if user.choose_history:
-        text = generate_text(user, message.text)
-        bot.send_message(chat_id=chat_id, text=text)
+        text, photo = generate_text(user, message.text)
+        if photo:
+            image_data = base64.b64decode(photo)  # Декодируем base64 строку
+            image = BytesIO(image_data)
+            bot.send_photo(chat_id=chat_id, photo=image, caption=text)
+        else:
+            bot.send_message(chat_id=chat_id, text=text)
     else:
         menu(chat_id=chat_id, user=user)
 
